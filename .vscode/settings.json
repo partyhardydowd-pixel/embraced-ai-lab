@@ -1,6 +1,6 @@
 ﻿{
-  "python.defaultInterpreterPath": "D:\Embraced\AI-Lab\pandas-numpy-play\.venv\Scripts\python.exe",
+  "python.defaultInterpreterPath": "${workspaceFolder}\\.venv\\Scripts\\python.exe",
   "python.terminal.activateEnvironment": true,
   "jupyter.askForKernelRestart": false,
-  "jupyter.notebookFileRoot": "\"
+  "jupyter.notebookFileRoot": "${workspaceFolder}"
 }
