@@ -1,4 +1,5 @@
-﻿name: selenium-qa
+$wf = @'
+name: selenium-qa
 
 on:
   push:
@@ -7,6 +8,7 @@ on:
   pull_request:
     paths:
       - "selenium-qa/**"
+  workflow_dispatch:
 
 jobs:
   test:
@@ -30,6 +32,10 @@ jobs:
           pip install -r requirements.txt
           pip install pytest-html
 
+      - name: Ensure reports folder
+        run: |
+          if (!(Test-Path reports)) { New-Item -ItemType Directory reports | Out-Null }
+
       - name: Run tests (headless)
         run: |
           .\.venv\Scripts\Activate.ps1
@@ -40,3 +46,11 @@ jobs:
         with:
           name: selenium-qa-report
           path: selenium-qa/reports/report.html
+'@
+
+$utf8NoBom = New-Object System.Text.UTF8Encoding($false)
+[System.IO.File]::WriteAllText(".github\workflows\pytest.yml", $wf, $utf8NoBom)
+
+git add .github\workflows\pytest.yml
+git commit -m "ci: rewrite workflow without BOM; add reports folder step"
+git push
