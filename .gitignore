@@ -2,3 +2,54 @@
 outputs
 __pycache__
 .ipynb_checkpoints
+
+
+# Python bytecode / build artifacts
+*.py[cod]
+*$py.class
+build/
+dist/
+eggs/
+*.egg-info/
+.installed.cfg
+
+# Virtual environments
+.env
+.envrc
+.venv/
+venv/
+ENV/
+env/
+venv.bak/
+
+# Test, coverage, and caches
+.pytest_cache/
+.mypy_cache/
+.cache/
+htmlcov/
+coverage.xml
+.coverage
+
+# IDE / editor
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+
+# Devcontainer
+.devcontainer/
+devcontainer.json
+
+# Jupyter
+.ipynb_checkpoints
+
+# Logs and local outputs
+*.log
+outputs/
+
+# Local config / secrets
+.env.local
+secrets.json
+.settings/
+.local/

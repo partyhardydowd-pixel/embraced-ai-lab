@@ -7,9 +7,10 @@ def driver():
     opts = Options()
     opts.add_argument("--headless=new")
     opts.add_argument("--window-size=1366,768")
-    if os.getenv("CI"):  # friendlier for pipelines
-        opts.add_argument("--no-sandbox")
-        opts.add_argument("--disable-dev-shm-usage")
+    # In containerized or CI environments Chrome often needs these flags
+    opts.add_argument("--no-sandbox")
+    opts.add_argument("--disable-dev-shm-usage")
+    opts.add_argument("--disable-gpu")
     d = webdriver.Chrome(options=opts)
     try:
         yield d
@@ -28,8 +29,6 @@ class HomePage:
 
     def title(self):
         return self.d.title
-
-from pages.home_page import HomePage
 
 def test_title_matches(driver):
     page = HomePage(driver)
